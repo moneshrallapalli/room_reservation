@@ -1,6 +1,6 @@
 Room Reservation System - Project Documentation
 Project Overview
-Project Name: Room Reservation System Team: Team 4 Date: November 6, 2025
+Project Name: Room Reservation SystemTeam: Team 4 Date: November 6, 2025
 
 1. Project Description
 The Room Reservation System is a web-based application that enables university users (students, faculty, and staff) to search, book, and manage room reservations across multiple campus buildings. The system provides an interactive, map-based interface for room selection and includes comprehensive administrative controls.
@@ -214,4 +214,4 @@ Expansion Capability:
 6. Set up Kubernetes cluster for deployment
 7. Establish performance testing framework
 
-Document Status: Initial Requirements Last Updated: November 6, 2025 Team Members: Team 4
+Document Status: Initial RequirementsLast Updated: November 6, 2025Team Members: Team 4
