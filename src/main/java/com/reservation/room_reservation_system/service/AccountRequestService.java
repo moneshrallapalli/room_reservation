@@ -46,6 +46,10 @@ public class AccountRequestService{
             return  accountRequestRepository.findAll().stream().map(this::mapToResponse).collect(Collectors.toList());
             
         }
+        public List<AccountRequestResponse> getAllRequests() {
+            return  accountRequestRepository.findAll().stream().map(this::mapToResponse).collect(Collectors.toList());
+            
+        }
 
         @Transactional
         public AccountRequestResponse approveRequest(Long requestId){
