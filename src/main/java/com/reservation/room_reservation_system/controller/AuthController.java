@@ -1,8 +1,8 @@
-package main.java.com.reservation.room_reservation_system.controller;
+package com.reservation.room_reservation_system.controller;
 
-import com.reservation.roomreservationsystem.dto.LoginRequest;
-import com.reservation.roomreservationsystem.dto.LoginResponse;
-import com.reservation.roomreservationsystem.service.UserService;
+import com.reservation.room_reservation_system.dto.LoginRequest;
+import com.reservation.room_reservation_system.dto.LoginResponse;
+import com.reservation.room_reservation_system.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

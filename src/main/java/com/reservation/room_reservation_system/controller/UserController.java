@@ -1,7 +1,7 @@
-package main.java.com.reservation.room_reservation_system.controller;
+package com.reservation.room_reservation_system.controller;
 
-import com.reservation.roomreservationsystem.dto.UserResponse;
-import com.reservation.roomreservationsystem.service.UserService;
+import com.reservation.room_reservation_system.dto.UserResponse;
+import com.reservation.room_reservation_system.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

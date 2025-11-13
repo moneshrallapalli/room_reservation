@@ -1,4 +1,4 @@
-package main.java.com.reservation.room_reservation_system.dto;
+package com.reservation.room_reservation_system.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 

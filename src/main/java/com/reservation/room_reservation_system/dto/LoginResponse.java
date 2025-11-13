@@ -1,4 +1,4 @@
-package main.java.com.reservation.room_reservation_system.dto;
+package com.reservation.room_reservation_system.dto;
 import com.reservation.room_reservation_system.model.UserRole;
 
 import lombok.AllArgsConstructor;

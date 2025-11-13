@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.reservation.roomreservationsystem.repository.UserRepository;
-import com.reservation.roomreservationsystem.model.User;
-import com.reservation.roomreservationsystem.model.UserRole;
+import com.reservation.room_reservation_system.repository.UserRepository;
+import com.reservation.room_reservation_system.model.User;
+import com.reservation.room_reservation_system.model.UserRole;
 
 
 

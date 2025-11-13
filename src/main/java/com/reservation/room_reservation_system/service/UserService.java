@@ -1,10 +1,10 @@
-package main.java.com.reservation.room_reservation_system.service;
+package com.reservation.room_reservation_system.service;
 
-import com.reservation.roomreservationsystem.dto.LoginRequest;
-import com.reservation.roomreservationsystem.dto.LoginResponse;
-import com.reservation.roomreservationsystem.dto.UserResponse;
-import com.reservation.roomreservationsystem.model.User;
-import com.reservation.roomreservationsystem.repository.UserRepository;
+import com.reservation.room_reservation_system.dto.LoginRequest;
+import com.reservation.room_reservation_system.dto.LoginResponse;
+import com.reservation.room_reservation_system.dto.UserResponse;
+import com.reservation.room_reservation_system.model.User;
+import com.reservation.room_reservation_system.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
