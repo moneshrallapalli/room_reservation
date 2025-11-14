@@ -4,7 +4,8 @@ import com.reservation.room_reservation_system.dto.AccountRequestResponse;
 import com.reservation.room_reservation_system.service.AccountRequestService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity; 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class AccountRequestController {
         }
 
         @GetMapping ("/pending")
+        @PreAuthorize("hasAnyRole('ADMIN')")
         public ResponseEntity<List<AccountRequestResponse>> getPendingRequests () {
 
             List<AccountRequestResponse> requests = accountRequestService.getPendingRequests();
@@ -44,6 +46,7 @@ public class AccountRequestController {
             return ResponseEntity.ok(requests);
         }
         @PostMapping("/{id}/approve")
+        @PreAuthorize("hasAnyRole('ADMIN')")
         public ResponseEntity<AccountRequestResponse> approveRequest (@PathVariable Long id) {
             try {
 
@@ -55,6 +58,7 @@ public class AccountRequestController {
             }
         }
         @PostMapping("/{id}/reject")
+        @PreAuthorize("hasAnyRole('ADMIN')")
         public ResponseEntity<AccountRequestResponse> rejectRequest(@PathVariable Long id) {
         try {
             AccountRequestResponse response = accountRequestService.rejectRequest(id);

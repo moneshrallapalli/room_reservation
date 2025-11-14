@@ -6,6 +6,7 @@ import com.reservation.room_reservation_system.model.RequestStatus;
 import com.reservation.room_reservation_system.model.User;
 import com.reservation.room_reservation_system.repository.AccountRequestRepository;
 import com.reservation.room_reservation_system.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,9 +18,12 @@ import java.util.stream.Collectors;
 public class AccountRequestService{
     private final AccountRequestRepository accountRequestRepository;
     private final UserRepository userRepository;
-    public AccountRequestService(AccountRequestRepository accountRequestRepository, UserRepository userRepository){
+    private final PasswordEncoder passwordEncoder;
+    
+    public AccountRequestService(AccountRequestRepository accountRequestRepository, UserRepository userRepository, PasswordEncoder passwordEncoder){
         this.accountRequestRepository = accountRequestRepository;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
 
     }
 
@@ -34,9 +38,11 @@ public class AccountRequestService{
 
         }
 
+
+        String hashedPassword = passwordEncoder.encode(dto.getPassword());
         AccountRequest request = new AccountRequest(dto.getEmail(),dto.getFullName(),
         dto.getRole(),
-        dto.getPassword());
+        hashedPassword);
 
         AccountRequest saved = accountRequestRepository.save(request);
         return mapToResponse(saved);
