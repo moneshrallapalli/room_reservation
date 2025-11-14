@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.reservation.room_reservation_system.repository.UserRepository;
 import com.reservation.room_reservation_system.model.User;
@@ -21,12 +22,16 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
     
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    
     @Override
     public void run(String... args) throws Exception {
 
         if (!userRepository.existsByEmail("admin@roomreservation.com")) {
-
-            User admin = new User("admin@roomreservation.com", "admin123", "System Administrator",UserRole.ADMIN);
+            
+            String hashedPassword = passwordEncoder.encode("admin123");
+            User admin = new User("admin@roomreservation.com", hashedPassword, "System Administrator",UserRole.ADMIN);
             userRepository.save(admin);
 
             logger.info("Default admin user created");

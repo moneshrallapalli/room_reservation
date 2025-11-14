@@ -5,6 +5,8 @@ import com.reservation.room_reservation_system.dto.LoginResponse;
 import com.reservation.room_reservation_system.dto.UserResponse;
 import com.reservation.room_reservation_system.model.User;
 import com.reservation.room_reservation_system.repository.UserRepository;
+import com.reservation.room_reservation_system.util.JwtUtil;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +16,13 @@ import java.util.stream.Collectors;
 public class UserService {
     
     private final UserRepository userRepository;
-    public UserService(UserRepository userRepository) {
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
+    
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;
     }
     
     public LoginResponse login(LoginRequest request) {
@@ -23,16 +30,19 @@ public class UserService {
         User user = userRepository.findByEmail(request.getEmail())
             .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
         
-        if (!user.getPassword().equals(request.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new IllegalArgumentException("Invalid email or password");
         }
+        
+        String token = jwtUtil.generateToken(user.getEmail(), user.getRole().toString());
         
         return new LoginResponse(
             user.getId(),
             user.getEmail(),
             user.getFullName(),
             user.getRole(),
-            "Login successful"
+            "Login successful",
+            token
         );
         
         
